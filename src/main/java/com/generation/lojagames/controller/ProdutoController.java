@@ -32,7 +32,6 @@ public class ProdutoController {
 	@GetMapping
 	public ResponseEntity<List<Produto>> getAll() {
 		return ResponseEntity.ok(produtoRepository.findAll());
-
 	}
 
 	@GetMapping("/{id}")
@@ -43,7 +42,7 @@ public class ProdutoController {
 
 	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<Produto>> getByNome(@PathVariable String nome) {
-		return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCase(nome));
+		return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCaseOrderByNome(nome));
 	}
 
 	@GetMapping("/preco_maior/{preco}")
@@ -55,8 +54,6 @@ public class ProdutoController {
 	public ResponseEntity<List<Produto>> getByPrecoMenorQue(@PathVariable BigDecimal preco) {
 		return ResponseEntity.ok(produtoRepository.findAllByPrecoGreaterThanOrderByPreco(preco));
 
-		// SE A PESSOA BUSCAR COM PARÂMETROS QUE NÃO EXISTEM, O BAD REQUEST É CORRIGIDO
-		// NO FRONT?
 	}
 
 	@PostMapping

@@ -12,9 +12,7 @@ import com.generation.lojagames.model.Produto;
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long>{
 	
-	public List <Produto> findAllByNomeContainingIgnoreCase(@Param("nome") String nome);
-	
-	//PERGUNTAR PRO PROF COMO ORDENAR EM ORDEM ALFABÉTICA. SORT? ORDERBYALPHABETICAL?
+	public List <Produto> findAllByNomeContainingIgnoreCaseOrderByNome(@Param("nome") String nome);
 
 	public List <Produto> findAllByPrecoGreaterThanOrderByPreco(BigDecimal preco);
 	
